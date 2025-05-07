@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Culinary Cloud</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="shortcut icon" href="{% static 'images/culinarylogo.png' %}" type="image/x-icon">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="{% url 'home' %}" class="nav-logo">
+          <img src="{% static 'images/culinarylogo.png' %}" width="20px" />
+          <h2 class="logo-text">Culinary Cloud</h2>
+        </a>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="{% url 'search' %}" class="nav-link">Recipe</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'mealplan' %}" class="nav-link">Meat Plan</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'chatbot' %}" class="nav-link">Assistance</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'editprofile' %}" class="nav-link">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link">Log Out</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div class="banner">
+      <div class="content">
+        <h1>
+          Make your day <span style="color: #70c166">great</span><br />
+          With our special shared <span style="color: #70c166">recipes!</span>
+        </h1>
+        <p>
+          Step into Culinary Cloud, where flavors come alive and every meal
+          feels like home.
+        </p>
+        <div class="buttons">
+          <a href="search.html" class="button view-recipe">View Recipe</a>
+          <a href="#footer" class="button contact-us">Contact Us</a>
+        </div>
+      </div>
+      <div class="image">
+        <img class="banner-pic" src="{% static 'images/bannerpic.png' %}" alt="Banner" />
+      </div>
+    </div>
+
+    <div class="features">
+      <h1>Why Choose Us</h1>
+      <div class="list">
+        <div class="list-item">
+          <img class="item-image" src="{% static 'images/recipe.png' %}" />
+          <h2 class="item-title">Recipe</h2>
+          <p class="item-description">
+            Discover a vast collection of recipes tailored to your taste. From quick meals to gourmet dishes, find the perfect recipe for any occasion with ease.
+          </p>
+        </div>
+        <div class="list-item">
+          <img class="item-image" src="{% static 'images/meal-plan.png' %}" />
+          <h2 class="item-title">Meal Plan</h2>
+          <p class="item-description">
+            Plan your meals effortlessly with personalized suggestions. Create balanced weekly menus that suit your dietary needs and preferences.
+          </p>
+        </div>
+        <div class="list-item">
+          <img class="item-image" src="{% static 'images/assistance.png' %}" />
+          <h2 class="item-title">Assistance</h2>
+          <p class="item-description">
+            Get instant help with our AI-powered culinary assistant. Ask for recipe ideas, ingredient substitutions, or nutrition tips anytime you need.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="meal-plan-wrapper">
+      <div class="bg-img"></div>
+      <div class="meal-plan">
+        <div class="image">
+          <img class="meal-pic" src="{% static 'images/mealplan.jpg' %}" alt="Banner" />
+        </div>
+        <div class="container">
+          <h1>Meal Plan</h1>
+          <h2>Make your day great with our special shared recipes!</h2>
+          <ul class="steps">
+            <li class="step">
+              <h3>Personalized Plans</h3>
+            </li>
+            <p>
+              Create meal plans tailored to your dietary goals, whether you're aiming for weight loss, muscle gain, or balanced nutrition.
+            </p>
+            <li class="step">
+              <h3>Weekly Suggestions</h3>
+            </li>
+            <p>
+              Receive a curated weekly menu with recipes that match your preferences, ensuring variety and ease in your cooking routine.
+            </p>
+            <li class="step">
+              <h3>Effortless Scheduling</h3>
+            </li>
+            <p>
+              Organize your meals effortlessly with a simple interface, helping you save time and stay consistent with your eating habits.
+            </p>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-row">
+        <div class="footer-col">
+          <img src="{% static 'images/culinarylogo.png' %}" width="20px" />
+          <h4>Culinary Cloud</h4>
+          <p>Where flavors come alive and every meal feels like home</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'search' %}">Recipes</a></li>
+            <li><a href="{% url 'mealplan' %}">Meal Plan</a></li>
+            <li><a href="{% url 'chatbot' %}">Assistance</a></li>
+            <li><a href="{% url 'editprofile' %}">Profile</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <p>Email: support@culinarycloud.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><p>© 2025 Culinary Cloud. All rights reserved.</p></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

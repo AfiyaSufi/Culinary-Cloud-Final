@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CC - Sign Up & Log In</title>
+    <link rel="stylesheet" href="{% static 'css/account.css' %}" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/culinarylogo.png' %}"
+      type="image/x-icon"
+    />
+    <script src="{% static 'js/account.js' %}"></script>
+    <script>
+      // Pass URLs and CSRF token to JavaScript
+      const SIGNUP_URL = "{% url 'signup' %}";
+      const LOGIN_URL = "{% url 'login' %}";
+      const CSRF_TOKEN = "{{ csrf_token }}";
+    </script>
+  </head>
+  <body>
+    <div class="banner">
+      <img src="{% static 'images/culinarylogo.png' %}" width="160px" />
+      <h1>Join Culinary Cloud</h1>
+      <p>
+        Welcome to Culinary Cloud — your gateway to a world of flavors! Whether
+        you're a home cook, a seasoned chef, or simply someone who loves good
+        food, our platform brings you a universe of recipes to explore. Join us
+        today and start saving, sharing, and discovering delicious dishes from
+        around the globe.
+      </p>
+      <p>
+        Signing up gives you access to personalized recipe collections, curated
+        recommendations, and the ability to save your favorites for easy access
+        anytime. Log in to continue your culinary journey, share your creations,
+        and connect with a vibrant community of food lovers!
+      </p>
+    </div>
+    <div class="container">
+      <div class="buttons">
+        <button id="signUp" class="btn active" onclick="signUp()">
+          SIGN UP
+        </button>
+        <button id="logIn" class="btn" onclick="logIn()">SIGN IN</button>
+      </div>
+      <div class="content">
+        <form method="post" action="{% url 'signup' %}">
+          {% csrf_token %}
+          <div class="divs">
+            <label for="name">NAME</label>
+            <input class="fields" type="text" name="name" required />
+          </div>
+          <div class="divs">
+            <label for="email">EMAIL</label>
+            <input class="fields" type="email" name="email" required />
+          </div>
+          <div class="divs">
+            <label for="password">PASSWORD</label>
+            <input class="fields" type="password" name="password" required />
+          </div>
+          <input
+            class="submit signup"
+            type="submit"
+            value="SIGN UP"
+          />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

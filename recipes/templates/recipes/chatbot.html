@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CC - AI Assistance</title>
+    <link rel="stylesheet" href="{% static 'css/chatbot.css' %}" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/culinarylogo.png' %}"
+      type="image/x-icon"
+    />
+    <script>
+      // Pass the chatbot API URL and image paths to JavaScript
+      const CHATBOT_API_URL = "{% url 'chatbot_api' %}";
+      const AI_IMAGE_URL = "{% static 'images/ai.png' %}";
+      const USER_PROFILE_IMAGE = "{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/profile1.png' %}{% endif %}";
+    </script>
+    <script src="{% static 'js/chatbot.js' %}" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="{% url 'home' %}" class="nav-logo">
+          <img src="{% static 'images/culinarylogo.png' %}" width="20px" />
+          <h2 class="logo-text">Culinary Cloud</h2>
+        </a>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="{% url 'search' %}" class="nav-link">Recipe</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'mealplan' %}" class="nav-link">Meat Plan</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'chatbot' %}" class="nav-link">Assistance</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'editprofile' %}" class="nav-link">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link">Log Out</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="chatbox">
+      <div class="messages" id="messages">
+        <div class="ai-prompt">
+          <img src="{% static 'images/ai.png' %}" alt="AI" />
+          <p>Hi! I'm Culinary Cloud, your AI assistant. Ask me about food, recipes, diets, or ingredients!</p>
+        </div>
+      </div>
+      <div class="input">
+        <textarea id="user-input" placeholder="Type a message"></textarea>
+        <button id="send-button">Send</button>
+      </div>
+    </section>
+  </body>
+</html>

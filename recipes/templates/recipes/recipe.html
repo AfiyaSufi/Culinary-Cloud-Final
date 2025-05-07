@@ -1,0 +1,180 @@
+{% load static recipe_filters %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CC - Recipe</title>
+    <link rel="stylesheet" href="{% static 'css/recipe.css' %}" />
+    <script src="{% static 'js/recipe.js' %}" defer></script>
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/culinarylogo.png' %}"
+      type="image/x-icon"
+    />
+    <script>
+      // Define recipeId for use in recipe.js
+      window.recipeId = {{ recipe.id|safe }};
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="{% url 'home' %}" class="nav-logo">
+          <h2 class="logo-text">Culinary Cloud</h2>
+        </a>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="{% url 'search' %}" class="nav-link">Recipe</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'mealplan' %}" class="nav-link">Meal-Plan</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'chatbot' %}" class="nav-link">Assistance</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'editprofile' %}" class="nav-link">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link">Log Out</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <section class="introduction">
+        <h1>{{ recipe.recipe_name }}</h1>
+        <div class="ratings">
+          <img src="{% static 'images/star.png' %}" />
+          <p>{{ average_rating|floatformat:1 }} ({{ ratings_count }} Reviews)</p>
+        </div>
+        <p class="description">{{ recipe.description }}</p>
+        <img src="{{ recipe.recipe_image.url }}" alt="{{ recipe.recipe_name }}" />
+      </section>
+
+      <section class="author">
+        <img class="authorImg" src="{{ recipe.user.profile_picture.url }}" alt="Author" />
+        <div class="authorInfo">
+          <h2>Author Information</h2>
+          <p class="authorName">Hi, I'm <strong>{{ recipe.user.name }}</strong>!</p>
+          <p class="authorDescription">{{ recipe.user.bio }}</p>
+        </div>
+      </section>
+
+      <section class="recipeH">
+        <img class="recipeImg" src="{{ recipe.recipe_image.url }}" alt="{{ recipe.recipe_name }}" />
+        <h2>{{ recipe.recipe_name }}</h2>
+        <hr />
+        <div class="rhInfo">
+          <p>TOTAL TIME: {{ recipe.total_time }}</p>
+          <p>SERVINGS: {{ recipe.servings }}</p>
+        </div>
+      </section>
+      <section class="recipeB">
+        <h3>Ingredients</h3>
+        <ul id="ingredients">
+          {% for ingredient in recipe.ingredients|split:"," %}
+          {% if ingredient %}
+          <li>{{ ingredient }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        <h3>Instructions</h3>
+        <ul id="instructions">
+          {% for instruction in recipe.instructions|split:";" %}
+          {% if instruction %}
+          <li id="instruction-step-1">{{ instruction }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        <h3>Notes</h3>
+        <ul id="notes">
+          {% for note in recipe.additional_notes|split:"\n" %}
+          {% if note %}
+          <li>{{ note }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="recipeInfo">
+          <div class="stats">
+            <img src="{% static 'images/preptime.png' %}" />
+            <p>Prep Time: {{ recipe.prep_time }}</p>
+          </div>
+          <div class="stats">
+            <img src="{% static 'images/cooktime.png' %}" />
+            <p>Cook Time: {{ recipe.cook_time }}</p>
+          </div>
+          <div class="stats">
+            <img src="{% static 'images/category.png' %}" />
+            <p>Meal Category: {{ recipe.meal_category }}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rating">
+        <h3>Rate This Recipe</h3>
+        <form id="ratingForm">
+          {% csrf_token %}
+          <input type="number" id="rating" name="rating" min="0" max="5" step="0.1" placeholder="Rate (0-5)" required>
+          <button type="submit">Submit Rating</button>
+        </form>
+      </section>
+
+      <section class="comments">
+        <h3>Comments</h3>
+        <form class="commentForm" id="commentForm">
+          {% csrf_token %}
+          <h3>Add a Comment</h3>
+          <textarea id="comment" placeholder="Type your comment..."></textarea>
+          <p>N.B. You need to have an account and be signed in to comment.</p>
+          <button type="submit" id="submit">Submit</button>
+        </form>
+        {% for comment in comments %}
+        <div class="comment">
+          <img src="{{ comment.user.profile_picture.url }}" alt="{{ comment.user.name }}" />
+          <div class="commentInfo">
+            <p class="commentName">{{ comment.user.name }}</p>
+            <p class="commentDate">{{ comment.date|date:"F d, Y" }}</p>
+            <p class="commentText">{{ comment.comment }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </section>
+
+      <footer class="footer">
+        <div class="footer-row">
+          <div class="footer-col">
+            <img src="{% static 'images/culinarylogo.png' %}" width="20px" />
+            <h4>Culinary Cloud</h4>
+            <p>Where flavors come alive and every meal feels like home</p>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="links">
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'search' %}">Recipes</a></li>
+              <li><a href="{% url 'mealplan' %}">Meal Plan</a></li>
+              <li><a href="{% url 'chatbot' %}">Assistance</a></li>
+              <li><a href="{% url 'editprofile' %}">Profile</a></li>
+              <li><a href="{% url 'logout' %}">Log Out</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact Us</h4>
+            <p>Email: support@culinarycloud.com</p>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul class="links">
+              <li><a href="/privacy/">Privacy Policy</a></li>
+              <li><a href="/terms/">Terms of Service</a></li>
+              <li><p>© 2025 Culinary Cloud. All rights reserved.</p></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
