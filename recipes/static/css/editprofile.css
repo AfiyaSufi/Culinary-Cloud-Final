@@ -1,0 +1,343 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 20%,
+    rgba(237, 193, 83, 1) 100%
+  );
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  width: 100%;
+}
+
+header {
+  width: 100%;
+  z-index: 5;
+  background: #F4A261;
+}
+
+header .navbar {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .nav-logo .logo-text {
+  color: black;
+}
+
+.nav-logo{
+  display: flex;
+}
+
+.nav-logo img{
+  width: 45px;
+  margin-right: 10px;
+}
+
+.navbar .nav-menu {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar .nav-menu .nav-link {
+  padding: 10px 18px;
+  color: black;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.navbar .nav-menu .nav-link:hover {
+  color: black;
+  background: #A8C686;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+  height: 40vh;
+  background: url("../images/profileBG.jpg") no-repeat center center/cover;
+  margin-top: 40px;
+  border-radius: 20px;
+  color: white;
+}
+
+#links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+}
+
+.link-edit,
+.link-add {
+  width: 10%;
+  height: 50%;
+  background-color: #baff70;
+  border-radius: 10px;
+  margin: 0 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.5s ease-in-out;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.link-add:hover,
+.link-edit:hover {
+  background-color: #a0d65b;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(52, 52, 52, 0.1);
+}
+
+.container img {
+  width: 200px;
+  height: 200px;
+  border-radius: 90%;
+  margin: 20px 0;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.info.fade {
+  opacity: 0;
+}
+
+.profile-name {
+  width: 100%;
+  text-align: start;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.profile-bio {
+  width: 100%;
+  text-align: justify;
+  font-size: 1.3rem;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tab {
+  width: 5%;
+  height: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  margin: 0 10px;
+}
+
+.active {
+  background-color: #baff70;
+}
+
+.profile-email,
+.profile-occupation,
+.profile-hobbies,
+.profile-location,
+.profile-joined,
+.profile-categories {
+  width: 100%;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.recipes {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.recipes h3 {
+  font-size: 1.8rem;
+}
+
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 23%;
+  color: black;
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+}
+
+.card a{
+  text-align: center;
+  color: black;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  padding-top: 20px;
+}
+
+.footer {
+  width: 100%;
+  background: rgb(16, 3, 34);
+}
+
+.footer .footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 60px;
+}
+
+.footer-row .footer-col h4 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.footer-col .links {
+  margin-top: 20px;
+}
+
+.footer-col .links li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.footer-col .links li a {
+  text-decoration: none;
+  color: #bfbfbf;
+}
+
+.footer-col .links li a:hover {
+  color: #fff;
+}
+
+.footer-col p {
+  margin: 20px 0;
+  color: #bfbfbf;
+  max-width: 300px;
+}
+
+.footer-col img{
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+}
+
+.footer-col form {
+  display: flex;
+  gap: 5px;
+}
+
+.footer-col input {
+  height: 40px;
+  border-radius: 6px;
+  background: none;
+  width: 100%;
+  outline: none;
+  border: 1px solid #7489c6;
+  caret-color: #fff;
+  color: #fff;
+  padding-left: 10px;
+}
+
+.footer-col input::placeholder {
+  color: #ccc;
+}
+
+.footer-col form button {
+  background: #fff;
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.footer-col form button:hover {
+  background: #cecccc;
+}
+
+.footer-col .icons {
+  display: flex;
+  margin-top: 30px;
+  gap: 30px;
+  cursor: pointer;
+}
+
+.footer-col .icons i {
+  color: #afb6c7;
+}
+
+.footer-col .icons i:hover {
+  color: #fff;
+}
